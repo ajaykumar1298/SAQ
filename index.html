@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Skills Test</title>
+    <style>
+        /* Reset default margin & padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Centering content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+            /* margin: 5px; */
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            margin: 0;
+        }
+
+        /* White Box Styling */
+        .container {
+            margin: 50px;
+            width: 90%;
+            max-width: 380px;
+            padding: 25px;
+            text-align: center;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #0056b3;
+            box-shadow: 0 0 5px rgba(0, 91, 255, 0.5);
+        }
+
+        button {
+            width: 48%;
+            padding: 12px;
+            margin: 5px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Mobile friendly */
+        @media (max-width: 400px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            button {
+                width: 100%;
+                margin: 8px 0;
+            }
+        }
+        .resultMsg-hide{
+            display: none;
+        }
+        .danger{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test Your Math Skills</h1>
+        <input id ="inputField" type="number" placeholder="Enter a number" />
+        <p id="msg">Enter a value to get your result</p>
+        <div id="resultMsg" class="resultMsg-hide">
+            <p id="resultMsg">Your Value </p>
+            <h2 id="result"></h2>
+        </div>
+        <button id="sq">Find ^2</button>
+        <button id="qu">Find ^3</button>
+        <button id="reload">Reset Value </button>
+    </div>
+
+    <script>
+        let input=document.querySelector("#inputField")
+        let sqBtn=document.querySelector("#sq")
+        let quBtn=document.querySelector("#qu")
+        let Defaultmsg=document.querySelector("#msg")
+        let Resultmsg=document.querySelector("#resultMsg")
+        let FinalValue=document.querySelector("#result")
+
+
+        let setValue=function(isSq){
+            if(input.value=="" || input.value== " " ){
+                Defaultmsg.innerHTML="Please Enter a valid number"
+                Defaultmsg.classList.add("danger")
+            }else{
+                Resultmsg.classList.remove("resultMsg-hide")
+                msg.classList.add("resultMsg-hide")
+                let value=Number(input.value)
+                FinalValue.innerHTML=isSq?value*value:value*value*value
+
+            }
+        }
+        sqBtn.addEventListener("click",()=>{
+            
+            setValue(true)
+        })
+        quBtn.addEventListener("click",()=>{
+            setValue(false)
+        })
+        
+
+        reload.addEventListener("click",()=>{
+            // window.location.reload()
+            input.value=""
+            Resultmsg.classList.add("resultMsg-hide")
+            msg.classList.remove("resultMsg-hide","danger")
+            msg.innerHTML="Enter a value to get your result"
+        })
+
+    </script>
+</body>
+</html>
